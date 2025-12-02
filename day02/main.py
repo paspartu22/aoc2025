@@ -11,10 +11,8 @@ def check_pattern(number, pattern):
 
 def part2(name):
     with open(name) as file:
-        result_list = []
         result = 0
-        lines = file.readlines()
-        ranges = lines[0].split(',')
+        ranges = file.read().split(',')
         for one_range in ranges:
             # print(one_range)
             start, finish = one_range.split('-')
@@ -26,7 +24,6 @@ def part2(name):
                     pattern = number[:j]
                     # print(f'pattern {pattern}')
                     if (check_pattern(number, pattern)):
-                        result_list.append(i)
                         result += i
                         break
     return result
@@ -34,8 +31,7 @@ def part2(name):
 def part1(name):
     with open(name) as file:
         result = 0
-        lines = file.readlines()
-        ranges = lines[0].split(',')
+        ranges = file.read().split(',')
         for one_range in ranges:
             # print(one_range)
             start, finish = one_range.split('-')
@@ -48,13 +44,13 @@ def part1(name):
 
 
 def main():
-    print("should be 1227775554")
+    print("1227775554 should be")
     print(part1('day02/test.txt'))
     print(part1('day02/data.txt'))
 
-    print("should be 4174379265")
-    print(part2('day02/test.txt'))
-    print(part2('day02/data.txt'))
+    # print("should be 4174379265")
+    # print(part2('day02/test.txt'))
+    # print(part2('day02/data.txt'))
 
 if __name__ == "__main__":
     main()
