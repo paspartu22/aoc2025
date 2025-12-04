@@ -1,9 +1,3 @@
-def part2(name):
-    with open(name) as file:
-        result = 0
-
-    return result
-
 def part1(name):
     with open(name) as file:
         result = 0
@@ -11,12 +5,20 @@ def part1(name):
     return result
 
 
+def part2(name):
+    with open(name) as file:
+        result = 0
+
+    return result
+
+
+
 def main():
-    print("1227775554 should be")
+    print(" should be")
     # print(part1('day02/test.txt'))
     # print(part1('day02/data.txt'))
 
-    # print("should be 4174379265")
+    # print(" should be")
     # print(part2('day02/test.txt'))
     # print(part2('day02/data.txt'))
 
