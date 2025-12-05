@@ -2,6 +2,23 @@ directions = [[-1,-1], [0,-1], [1,-1],
               [-1,0],          [1,0],
               [-1,1],  [0,1],  [1,1]]
 
+def part1(name):
+    grid = {}
+    with open(name) as file:
+        result = 0
+        for y, line in enumerate(file.readlines()):
+            for x, item in enumerate(line.strip()):
+                if item == "@":
+                    grid[(x,y)] = '@'
+        for item in grid:
+            counter = 0
+            for dir in directions:
+                if (item[0]+dir[0], item[1]+dir[1]) in grid:
+                    counter += 1
+            if counter < 4:
+                result += 1 
+    return result
+
 def part2(name):
     with open(name) as file:
         grid = {}
@@ -25,26 +42,6 @@ def part2(name):
             for item in can_be_removed:
                 grid.pop(item)
     return result
-
-
-def part1(name):
-    grid = {}
-    with open(name) as file:
-        result = 0
-        for y, line in enumerate(file.readlines()):
-            for x, item in enumerate(line.strip()):
-                if item == "@":
-                    grid[(x,y)] = '@'
-        for item in grid:
-            counter = 0
-            for dir in directions:
-                if (item[0]+dir[0], item[1]+dir[1]) in grid:
-                    counter += 1
-            if counter < 4:
-                result += 1 
-
-    return result
-
 
 def main():
     print("13 should be")
