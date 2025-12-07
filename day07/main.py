@@ -14,7 +14,6 @@ def draw(splitters, beam, max_x, max_y):
 
 def part1(name):
     with open(name) as file:
-        map = {}
         splitters = []
         beam = {0:set()}
         result = 0
@@ -46,8 +45,6 @@ def part1(name):
 
 def part2(name):
     with open(name) as file:
-        result = 0
-        map = {}
         splitters = []
         beam = {0:defaultdict(int)}
         max_y, max_x = 0,0
@@ -63,7 +60,6 @@ def part2(name):
         draw(splitters, beam, max_x, max_y)
         print()
         for y in range(max_y):
-            print(f'{y} {len(beam[y])}', flush= True)
             beam[y+1] = defaultdict(int)
             for x in range(max_x):   
                 if x in beam[y]:             
@@ -74,9 +70,8 @@ def part2(name):
                         beam[y+1][x-1] += beam[y][x]
                         beam[y+1][x+1] += beam[y][x]
         draw(splitters, beam, max_x, max_y)
-        for i in beam[max_y].values():
-            result += i
-    return result
+    return sum(beam[max_y].values())
+
 
 
 
