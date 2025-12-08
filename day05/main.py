@@ -43,7 +43,6 @@ def part2(name):
                 return result      
     return result
 
-#367899984917516
 def main():
     print("3 should be")
     print(part1('day05/test.txt'))
