@@ -52,51 +52,6 @@ def part1(name):
                         break
     return result
 
-
-def find_min_natural_solution(solution, all_vars, search_range=range(0, 50)):
-    all_vars = set(all_vars)
-    
-    # Найти свободные переменные (которые НЕ в решении)
-    free_vars = list(all_vars - set(solution.keys()))
-    free_vars.sort(key=lambda x: int(str(x)[1:]))
-    
-    best_sol = None
-    best_sum = None
-    
-    # Перебираем значения свободных переменных
-    for values in itertools.product(search_range, repeat=len(free_vars)):
-        subst = dict(zip(free_vars, values))
-        
-        full_sol = {}
-        ok = True
-        
-        for var in all_vars:
-            if var in solution:
-                val = solution[var].subs(subst)
-            else:
-                val = subst[var]
-            
-            try:
-                val_int = int(val)
-                if val_int != val or val_int <= 0:
-                    ok = False
-                    break
-                full_sol[var] = val_int
-            except (TypeError, ValueError):
-                ok = False
-                break
-        
-        if not ok:
-            continue
-        
-        s = sum(full_sol.values())
-        
-        if best_sum is None or s < best_sum:
-            best_sum = s
-            best_sol = full_sol
-    
-    return best_sol, best_sum
-
 def find_all_natural_solutions(solution, all_vars, max_val):
     """
     Найти ВСЕ натуральные решения из символьного решения.
