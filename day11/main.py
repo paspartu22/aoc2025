@@ -1,5 +1,6 @@
 memo = {}
 def dfs(graph, path, end):    
+    
     if path[-1] == end:
         yield path
         print(path)
@@ -10,7 +11,10 @@ def dfs(graph, path, end):
             if p not in path:
                 new_path = path.copy()
                 new_path.append(p)
-                yield from dfs(graph, new_path, end)
+                
+                result = list(dfs(graph, new_path, end))
+                
+                yield from result
 
                 # result = result
     
@@ -31,8 +35,9 @@ def part2(name):
         graph = {}
         for line in file.readlines():
             graph[line.split(":")[0]] = line.strip().split(":")[1].split(" ")[1:]
+        
         print(graph)
-        result = list(dfs(graph, ["fft"], "dac"))
+        result = list(dfs(graph, ["svr"], "dac"))
         print(result)
         # result = len([r for r in result if "dac" in r and "fft" in r])
     return result
